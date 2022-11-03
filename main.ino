@@ -6,6 +6,8 @@ void setup() {
   setUpObstacleModule();
   setUpBoundaryModule();
   setUpMovementModule();
+
+
 }
 
 void loop() {
