@@ -32,7 +32,7 @@ void setUpLeftSidePWM(){
     | PWM_CMR_CPOL; //Set output polarity be high.
 
     // The vehicle starts with 0 duty cycle: should not move
-    setLeftSidePWNFequency(0);
+    setLeftSidePWNDuty(0);
 }
 
 
@@ -52,14 +52,14 @@ void setUpRightSidePWM(){
     | TC_CMR_ACPC_SET; // Set TIOA0 on RC compare match
     
     // The vehicle starts with 0 duty cycle: should not move
-    setRightSidePWNFequency(0);
+    setRightSidePWNDuty(0);
 }
 
 
 /**
 * Set the right side PWN frequency
 */
-void setLeftSidePWNFequency(float duty){
+void setLeftSidePWNDuty(float duty){
     float temp_period  = 1000000.0/PWM_FREQUENCY;
 
     PWM->PWM_CH_NUM[0].PWM_CPRD = temp_period-1; //Set PWM freq 1MHz/(60000) = 66.667Hz
@@ -70,7 +70,7 @@ void setLeftSidePWNFequency(float duty){
 /**
 * Set the right side PWN frequency
 */
-void setRightSidePWNFequency(float duty){
+void setRightSidePWNDuty(float duty){
     float temp_period  = 1000000.0/PWM_FREQUENCY;
 
     TC0->TC_CHANNEL[0].TC_RC =  temp_period-1; //Set the frequency to 66.667Hz (Period 60 ms)
@@ -84,16 +84,16 @@ void setRightSidePWNFequency(float duty){
 * Turn the vehicle left
 */
 void turnLeft(float turnAngle ){
-  setLeftSidePWNFequency(0.5);
-  setRightSidePWNFequency(1);
+  setLeftSidePWNDuty(0.5);
+  setRightSidePWNDuty(1);
 }
 
 /**
 * Turn the vehicle right
 */
 void turnRight(float turnAngle ){
-  setLeftSidePWNFequency(1);
-  setRightSidePWNFequency(0.5);
+  setLeftSidePWNDuty(1);
+  setRightSidePWNDuty(0.5);
 }
 
 /**
@@ -103,8 +103,8 @@ void moveForward(float turnAngle ){
     digitalWrite(LEFT_SIDE_DIRECTION_PIN, HIGH);
     digitalWrite(RIGHT_SIDE_DIRECTION_PIN, HIGH);
 
-    setLeftSidePWNFequency(1);
-    setRightSidePWNFequency(1);    
+    setLeftSidePWNDuty(1);
+    setRightSidePWNDuty(1);    
 }
 
 /**
@@ -114,6 +114,6 @@ void moveBackward(float turnAngle ){
     digitalWrite(LEFT_SIDE_DIRECTION_PIN, LOW);
     digitalWrite(RIGHT_SIDE_DIRECTION_PIN, LOW);
 
-    setLeftSidePWNFequency(1);
-    setRightSidePWNFequency(1);
+    setLeftSidePWNDuty(1);
+    setRightSidePWNDuty(1);
 }
