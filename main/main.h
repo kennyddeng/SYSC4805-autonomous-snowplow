@@ -6,7 +6,6 @@
   #endif
 
     /********************START OF MOVEMENT MODULE SECTION********************/
-      #define DUTY_CYLE  1
       #define LEFT_SIDE_DIRECTION_PIN 50
       #define RIGHT_SIDE_DIRECTION_PIN  48
 
