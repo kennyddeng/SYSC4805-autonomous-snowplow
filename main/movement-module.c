@@ -39,7 +39,7 @@ void setUpLeftSidePWM(){
 /**
 * Set up the right side PWM
 * 
-* The input pin is PC3, physical pin 60,
+* The input pin is B25, which is Arduino Pin 2
 */
 void setUpRightSidePWM(){
     PMC->PMC_PCER0 |= PMC_PCER0_PID27;//TC0 power ON - Timer Counter 0 channel 0
