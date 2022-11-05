@@ -3,8 +3,8 @@
  * 
 */
 
-#include "Arduino.h";
-#include "main.h";
+#include "Arduino.h"
+#include "main.h"
 
 /**
 *  Set up the movement module
