@@ -38,6 +38,12 @@
 
 
     /********************START OF BOUNDARY MODULE SECTION********************/
+
+    #define LEFT_LINE_DETECTION_OUT_PIN 6
+    #define CENTER_LINE_DETECTION_OUT_PIN 7
+    #define RIGHT_LINE_DETECTION_OUT_PIN 8
+
+
       extern void setupBoundaryModule(void);
       extern int isBoundaryDetected;
     /********************END OF BOUNDARY MODULE SECTION********************/
