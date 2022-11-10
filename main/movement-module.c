@@ -12,7 +12,7 @@
 void setupMovementModule(){
     // configure output direction pin :
     pinMode(LEFT_SIDE_DIRECTION_PIN, OUTPUT);
-    pinMode(RIGHT_SIDE_DIRECTION_PIN, INPUT);  
+    pinMode(RIGHT_SIDE_DIRECTION_PIN, OUTPUT);  
 
     setUpLeftSidePWM();
     setUpRightSidePWM();

@@ -7,7 +7,7 @@
 
     /********************START OF MOVEMENT MODULE SECTION********************/
       #define LEFT_SIDE_DIRECTION_PIN 50
-      #define RIGHT_SIDE_DIRECTION_PIN  48
+      #define RIGHT_SIDE_DIRECTION_PIN 48
 
       //#define PWM_FREQUENCY  1000.0
       
@@ -38,5 +38,3 @@
     #endif
 
 #endif
-
-
