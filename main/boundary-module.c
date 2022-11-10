@@ -27,6 +27,7 @@ void checkBoundary() {
       isObstacleDetected = TRUE;
     }
     else{
+      isObstacleDetected = false;
       delay(15);
     }
 }
