@@ -22,8 +22,16 @@
 
 
       /********************START OF OBSTACLE MODULE SECTION********************/
-      extern void setupObstacleModule(void);
-      extern int isObstacleDetected;
+      #define OBSTACLE_AVOIDANCE_SENSOR_PIN 0
+      #define TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN 2
+      #define TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN 3
+      
+      extern bool isObstacleDetected;
+      extern void setUpObstacleModule(void);
+      extern void setUpObstacleAvoidanceSensor(void);
+      extern void setUpTimeOfFlightSensor(void);
+      extern bool checkForObstacle(void);
+      extern void loop(void);
       /********************END OF OBSTACLE MODULE SECTION********************/
 
 
