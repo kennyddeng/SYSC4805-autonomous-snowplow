@@ -10,7 +10,7 @@
 int isObstacleDetected = 0;
 
 void setupBoundaryModule(){
-  pinMode(5,OUTPUT);
+  // pinMode(5,OUTPUT);
 
   pinMode(LEFT_LINE_DETECTION_OUT_PIN,INPUT);
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT);
@@ -23,16 +23,16 @@ void setupBoundaryModule(){
 
 void checkBoundary() {
     // Boundary detection
-    if(digitalRead(6) == LOW){
-      digitalWrite(5,HIGH);
-      delay(15);
+    if(digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW){
       isObstacleDetected = TRUE;
     }
     else{
-      digitalWrite(5,LOW);
-      isObstacleDetected = FALSE;
       delay(15);
     }
 }
+}
+
+bool isBoundaryDetected(){
+  re
 }
 
