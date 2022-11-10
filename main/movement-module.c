@@ -21,7 +21,7 @@ void setupMovementModule(){
 /**
 * Turn the vehicle left
 */
-void turnLeft(float angle){
+void turnLeft(){
   enableMovement();
 
   // Set left side backwards
@@ -52,7 +52,7 @@ void enableMovement(){
 /**
 * Turn the vehicle right
 */
-void turnRight(float turnAngle ){
+void turnRight(){
   enableMovement();
   
   // Set left side forward
@@ -65,7 +65,7 @@ void turnRight(float turnAngle ){
 /**
 * Move the vehicle forward
 */
-void moveForward(float turnAngle ){
+void moveForward(){
     enableMovement();
 
     digitalWrite(LEFT_SIDE_DIRECTION_PIN, HIGH);
@@ -75,7 +75,7 @@ void moveForward(float turnAngle ){
 /**
 * Move the vehicle backwards
 */
-void moveBackward(float turnAngle ){
+void moveBackward(){
     enableMovement();
 
     digitalWrite(LEFT_SIDE_DIRECTION_PIN, LOW);

@@ -5,6 +5,15 @@
   extern "C"{
   #endif
 
+    /********************START OF BOUNDARY MODULE SECTION********************/
+      extern int currentState;
+
+      #define NORMAL_STATE 0
+      #define OBSTACLE_DETECTED_STATE 1
+      #define BOUNDARY_DETECTED_STATE 2
+    /********************END OF BOUNDARY MODULE SECTION********************/
+
+    
     /********************START OF MOVEMENT MODULE SECTION********************/
       #define LEFT_SIDE_DIRECTION_PIN 50
       #define LEFT_SIDE_ENABLE_PIN 51
@@ -14,11 +23,11 @@
 
       extern void setupMovementModule(void);
 
-      void turnLeft(float duty);
-      void turnRight(float duty);
+      void turnLeft();
+      void turnRight();
 
-      void moveForward(float turnAngle) ;
-      void moveBackward(float turnAngle);
+      void moveForward() ;
+      void moveBackward();
     /********************END OF MOVEMENT MODULE SECTION********************/
 
 
