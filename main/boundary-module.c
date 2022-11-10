@@ -3,11 +3,12 @@
  * 
 */
 #include "Arduino.h"
+#include "stdio.h"
 #include "main.h"
 
 
 
-int isObstacleDetected = 0;
+bool isBoundaryDetected = false;
 
 void setupBoundaryModule(){
   // pinMode(5,OUTPUT);
@@ -16,25 +17,19 @@ void setupBoundaryModule(){
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT);
   pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT);
 
-  Serial.begin(9600);
 }
 
-
+bool boundaryDetected(){
+    return (digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW || digitalRead(RIGHT_LINE_DETECTION_OUT_PIN) == LOW || digitalRead(CENTER_LINE_DETECTION_OUT_PIN) == LOW);
+}
 
 void checkBoundary() {
+
     // Boundary detection
-    bool isBoundaryDetected(){
-    if(digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW){
-      isBoundaryDetected = TRUE;
+    if(boundaryDetected()){
+      isBoundaryDetected = true;
     }
     else{
       isBoundaryDetected = false;
-      delay(15);
     }
 }
-}
-
-bool isBoundaryDetected(){
-    return (digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW && RIGHT_LINE_DETECTION_OUT_PIN) == LOW && CENTER_LINE_DETECTION_OUT_PIN) == LOW)
-}
-
