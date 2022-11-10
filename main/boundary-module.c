@@ -23,17 +23,18 @@ void setupBoundaryModule(){
 
 void checkBoundary() {
     // Boundary detection
+    bool isBoundaryDetected(){
     if(digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW){
-      isObstacleDetected = TRUE;
+      isBoundaryDetected = TRUE;
     }
     else{
-      isObstacleDetected = false;
+      isBoundaryDetected = false;
       delay(15);
     }
 }
 }
 
 bool isBoundaryDetected(){
-  re
+    return (digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW && RIGHT_LINE_DETECTION_OUT_PIN) == LOW && CENTER_LINE_DETECTION_OUT_PIN) == LOW)
 }
 
