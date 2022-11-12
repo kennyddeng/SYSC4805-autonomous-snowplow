@@ -15,7 +15,7 @@ void setupMovementModule(){
     pinMode(LEFT_SIDE_ENABLE_PIN, OUTPUT);
 
     pinMode(RIGHT_SIDE_DIRECTION_PIN, OUTPUT);  
-    pinMode(RIGHT_SIDE_ENABLE_PIN, OUTPUT); 
+    pinMode(RIGHT_SIDE_ENABLE_PIN, OUTPUT);
 }
 
 /**
@@ -45,7 +45,6 @@ void stop(){
 void enableMovement(){
     digitalWrite(LEFT_SIDE_ENABLE_PIN, HIGH);
     digitalWrite(RIGHT_SIDE_ENABLE_PIN, HIGH);
-
 }
 
 

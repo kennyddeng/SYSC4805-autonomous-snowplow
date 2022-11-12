@@ -6,17 +6,16 @@
 #include "stdio.h"
 #include "main.h"
 
-
-
 bool isBoundaryDetected = false;
 
 void setupBoundaryModule(){
-  // pinMode(5,OUTPUT);
-
   pinMode(LEFT_LINE_DETECTION_OUT_PIN,INPUT);
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT);
   pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT);
 
+  attachInterrupt(digitalPinToInterrupt(LEFT_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(CENTER_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(RIGHT_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
 }
 
 bool boundaryDetected(){
