@@ -9,9 +9,9 @@
 bool isBoundaryDetected = false;
 
 void setupBoundaryModule(){
-  pinMode(LEFT_LINE_DETECTION_OUT_PIN,INPUT);
-  pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT);
-  pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT);
+  pinMode(LEFT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
+  pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
+  pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
 
   attachInterrupt(digitalPinToInterrupt(LEFT_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
   attachInterrupt(digitalPinToInterrupt(CENTER_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
