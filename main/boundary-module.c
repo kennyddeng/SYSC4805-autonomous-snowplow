@@ -13,9 +13,9 @@ void setupBoundaryModule(){
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
   pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
 
-  attachInterrupt(digitalPinToInterrupt(LEFT_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(CENTER_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(RIGHT_LINE_DETECTION_OUT_PIN), checkBoundary, CHANGE);
+  attachInterrupt(LEFT_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
+  attachInterrupt(CENTER_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
+  attachInterrupt(RIGHT_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
 }
 
 bool boundaryDetected(){

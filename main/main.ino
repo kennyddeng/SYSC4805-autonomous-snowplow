@@ -22,22 +22,23 @@ void loop() {
   updateState();
 
   Serial.println(currentState);
-  
+
   switch(currentState) {
 
-      case (NORMAL_STATE):{
+      case (NORMAL_STATE):
         moveForward();
-      }
+        break;
 
-      case (OBSTACLE_DETECTED_STATE):{      
+      case (OBSTACLE_DETECTED_STATE):    
         turnLeft();
-      }
+        break;
+      
 
-      case (BOUNDARY_DETECTED_STATE):{
+      case (BOUNDARY_DETECTED_STATE):
         turnLeft();
-      }
+         break;
+      
   }
-
 }
 
 
