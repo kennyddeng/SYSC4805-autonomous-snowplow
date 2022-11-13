@@ -24,7 +24,6 @@ void loop() {
   Serial.println(currentState);
 
   switch(currentState) {
-
       case (NORMAL_STATE):
         moveForward();
         break;
@@ -36,8 +35,7 @@ void loop() {
 
       case (BOUNDARY_DETECTED_STATE):
         turnLeft();
-         break;
-      
+         break;    
   }
 }
 
