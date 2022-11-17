@@ -1,9 +1,11 @@
 #ifndef MAIN_FILE_H    
 #define MAIN_FILE_H   
 
+
   #ifdef __cplusplus
   extern "C"{
   #endif
+
 
     /********************START OF BOUNDARY MODULE SECTION********************/
       extern int currentState;
@@ -48,7 +50,12 @@
 
     void setupBoundaryModule(void);
     void checkBoundary(void);
+
     /********************END OF BOUNDARY MODULE SECTION********************/
+
+
+
+
 
 
     #ifdef __cplusplus
