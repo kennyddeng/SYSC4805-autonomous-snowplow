@@ -6,23 +6,19 @@
 #include "Adafruit_VL53L1X.h"
 #include "main.h"
 
-Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN, TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN);
+//Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN, TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN);
+#define IRQ_PIN 2
+#define XSHUT_PIN 3
+
+Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(XSHUT_PIN, IRQ_PIN);
 
 bool isObstacleDetected;
 
+
 void setUpObstacleModule(){
-    setUpObstacleAvoidanceSensor();
     setupTimeOfFlightDistanceSensor();
-
-    startDetection();
 }
 
-void setUpObstacleAvoidanceSensor() {
-    // set pin to input
-    pinMode(OBSTACLE_AVOIDANCE_SENSOR_PIN, INPUT);
-    // turn on pullup resistors
-    digitalWrite(OBSTACLE_AVOIDANCE_SENSOR_PIN, HIGH);
-}
 
 void setUpTimeOfFlightDistanceSensor() {
     Serial.begin(115200);
@@ -59,33 +55,38 @@ void setUpTimeOfFlightDistanceSensor() {
     */
 }
 
-bool checkForObstacle() {
-    // detect for obstacles
-        // if obstacle false
-            // return false
-        // else (obstacle exists)
-            // return true
+void checkObstacle(int16_t distance) {
+    /*
+    input: valid distance in mm
+    */
 
-    // assume true, prove false
-    bool obstacleState = true;
-
-
+    if (distance <= 100) {
+        isObstacleDetected = true;
+    } else {
+        isObstacleDetected = false;
+    }
 }
+
 
 void loop() {
-    if (isObstacleDetected == false) {
-        // move forwards
-        // constantly check range in front using tof
-            // if range > 10 cm, good
-            // else (range < 10cm OR out of range)
-    } else { // obstacle in front of object
-        // isObstacleDetected = true;
-        // stop, turn 90 degrees (left or right)
-        // need to ensure robot does not hit/contact obstacle while turning
-        // detect for obstacles again
-            // if no obstacles, loop (end of function)
-            // isObstacleDetected = false;   
-            // else there are obstacles
-    }    
-}
+    int16_t distance;
 
+    if (vl53.dataReady()) {
+        // new measurement for the taking!
+        distance = vl53.distance();
+        if (distance == -1) {
+            // something went wrong!
+            Serial.print(F("Couldn't get distance: "));
+            Serial.println(vl53.vl_status);
+            return;
+        }
+        Serial.print(F("Distance: "));
+        Serial.print(distance);
+        Serial.println(" mm");
+
+        // data is read out, time for another reading!
+        vl53.clearInterrupt();
+
+        checkObstacle(distance);
+    }  
+}

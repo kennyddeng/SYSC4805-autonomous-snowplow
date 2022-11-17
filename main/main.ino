@@ -1,25 +1,59 @@
 #include "main.h"
 
+int currentState = NORMAL_STATE;
+extern bool isObstacleDetected;
+extern bool isBoundaryDetected;
+
 void setup() {
   setupBoundaryModule();
   setupMovementModule();
   setupObstacleModule();
+
+  Serial.begin(9600);
+
 }
 
 void loop() {
-    // Move forward for 5 seconds
-//    moveForward(0.0); // motor1 slow (both directions active)
-//    delay(5000);
-    
-//    //Move backwards for 5 seconds
-//    moveBackward(0.0); // currently right motors going forwards, left not moving
-//    delay(5000);
-//
-//    //turn right for 5 seconds
-//    turnRight(0.0); // all motors enabled, stalled (both directions active)
-//    delay(5000);
-//
-//    //turn left for 5 seconds
-//    turnLeft(0.0); // right motors enabled, stalled (both directions active)
-//    delay(5000);
+
+
+  //Boundary Flag & Obstacle flag set => turn
+  // if not, straight
+  // checkBoundary();
+
+  updateState();
+
+  Serial.println(currentState);
+
+  switch(currentState) {
+      case (NORMAL_STATE):
+        moveForward();
+        break;
+
+      case (OBSTACLE_DETECTED_STATE):    
+        turnLeft();
+        break;
+      
+
+      case (BOUNDARY_DETECTED_STATE):
+        turnLeft();
+         break;    
+  }
+}
+
+
+/**
+* Update the state based on the obstacle and boundary flags
+*/
+void updateState(){
+  if(isObstacleDetected){
+    currentState = OBSTACLE_DETECTED_STATE;
+  }else{
+    currentState = NORMAL_STATE;
+  }
+  
+  if(isBoundaryDetected){
+    currentState = BOUNDARY_DETECTED_STATE;
+  }else{
+    currentState = NORMAL_STATE;
+  }
 }
