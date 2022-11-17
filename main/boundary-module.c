@@ -26,10 +26,11 @@ bool boundaryDetected(){
 
 void checkBoundary() {
 
-    // Boundary detection
+    // Boundary detection 
     if(boundaryDetected()){
       isBoundaryDetected = true;
     }
+    // the boundary is not visible
     else{
       isBoundaryDetected = false;
     }
