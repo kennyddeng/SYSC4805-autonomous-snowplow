@@ -11,7 +11,7 @@ void setup() {
   setupObstacleModule();
 
   Serial.begin(9600);
-  watchdogEnable(5);  
+  watchdogEnable(100);  
 
 }
 
