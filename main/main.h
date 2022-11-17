@@ -1,9 +1,11 @@
 #ifndef MAIN_FILE_H    
 #define MAIN_FILE_H   
 
+
   #ifdef __cplusplus
   extern "C"{
   #endif
+
 
     /********************START OF BOUNDARY MODULE SECTION********************/
       extern int currentState;
@@ -21,7 +23,7 @@
       #define RIGHT_SIDE_DIRECTION_PIN  49
       #define RIGHT_SIDE_ENABLE_PIN 48
 
-      extern void setupMovementModule(void);
+      void setupMovementModule(void);
 
       void turnLeft();
       void turnRight();
@@ -38,9 +40,22 @@
 
 
     /********************START OF BOUNDARY MODULE SECTION********************/
-      extern void setupBoundaryModule(void);
-      extern int isBoundaryDetected;
+
+    #define LEFT_LINE_DETECTION_OUT_PIN 6
+    #define CENTER_LINE_DETECTION_OUT_PIN 7
+    #define RIGHT_LINE_DETECTION_OUT_PIN 8
+    
+    
+    extern bool isBoundaryDetected;
+
+    void setupBoundaryModule(void);
+    void checkBoundary(void);
+
     /********************END OF BOUNDARY MODULE SECTION********************/
+
+
+
+
 
 
     #ifdef __cplusplus
