@@ -1,42 +1,29 @@
 #include "main.h"
 
-
 void watchdogSetup(){}
 
 int currentState = NORMAL_STATE;
 extern bool isBoundaryDetected;
 
-// void watchdogSetup(){
-
-// }
-
 void setup() {
-
-
-
   setupBoundaryModule();
   setupMovementModule();
   setupObstacleModule();
 
   Serial.begin(9600);
-
-	// WDT_Disable (WDT);
-
   watchdogEnable(5);  
 
 }
 
 void loop() {
 
-
+  // Reset the watchdog timer
   watchdogReset();
 
-
+  // Update the state
   updateState();
 
   Serial.println(currentState);
-
-
 
   switch (currentState) {
     case (NORMAL_STATE):
@@ -53,7 +40,6 @@ void loop() {
       break;
   }
 }
-
 
 
 /**
