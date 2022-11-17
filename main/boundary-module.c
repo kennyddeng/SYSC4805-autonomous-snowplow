@@ -8,7 +8,9 @@
 
 bool isBoundaryDetected = false;
 
+
 void setupBoundaryModule(){
+  //pin configurations for the three cases. left, right and center.
   pinMode(LEFT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
   pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
