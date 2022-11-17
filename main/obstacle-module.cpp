@@ -16,7 +16,7 @@ bool isObstacleDetected;
 
 
 void setUpObstacleModule(){
-    setupTimeOfFlightDistanceSensor();
+    setUpTimeOfFlightDistanceSensor();
 }
 
 

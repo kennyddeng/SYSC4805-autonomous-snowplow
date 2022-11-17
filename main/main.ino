@@ -7,7 +7,7 @@ extern bool isBoundaryDetected;
 void setup() {
   setupBoundaryModule();
   setupMovementModule();
-  setupObstacleModule();
+  setUpObstacleModule();
 
   Serial.begin(9600);
 
@@ -47,12 +47,6 @@ void loop() {
 void updateState(){
   if(isObstacleDetected){
     currentState = OBSTACLE_DETECTED_STATE;
-  }else{
-    currentState = NORMAL_STATE;
-  }
-  
-  if(isBoundaryDetected){
-    currentState = BOUNDARY_DETECTED_STATE;
   }else{
     currentState = NORMAL_STATE;
   }
