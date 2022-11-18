@@ -26,7 +26,7 @@ bool boundaryDetected(){
 
 void checkBoundary() {
 
-    // Boundary detection 
+    // Boundary detection checker
     if(boundaryDetected()){
       isBoundaryDetected = true;
     }
