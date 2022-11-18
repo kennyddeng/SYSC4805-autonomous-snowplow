@@ -1,5 +1,5 @@
 /**
- * This module sets global flags that pertains to boundary detection
+ * This module sets global flags that pertains to boundary detection based on that the flag gets raised upon detection
  * 
 */
 #include "Arduino.h"
@@ -33,7 +33,7 @@ void checkBoundary() {
     if(boundaryDetected()){
       isBoundaryDetected = true;
     }
-    // the boundary is not visible
+    // condition where the boundary is not visible
     else{
       isBoundaryDetected = false;
     }
