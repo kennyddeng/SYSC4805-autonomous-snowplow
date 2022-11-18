@@ -31,7 +31,7 @@ void checkBoundary() {
     if(boundaryDetected()){
       isBoundaryDetected = true;
     }
-    // the boundary is not visible
+    // condition where the boundary is not visible
     else{
       isBoundaryDetected = false;
     }
