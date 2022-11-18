@@ -20,6 +20,7 @@ void setupBoundaryModule(){
   attachInterrupt(RIGHT_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
 }
 
+// enabling the flags if the boundary is detected
 bool boundaryDetected(){
     return (digitalRead(LEFT_LINE_DETECTION_OUT_PIN) == LOW || digitalRead(RIGHT_LINE_DETECTION_OUT_PIN) == LOW || digitalRead(CENTER_LINE_DETECTION_OUT_PIN) == LOW);
 }
