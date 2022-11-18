@@ -34,8 +34,12 @@
 
 
     /********************START OF OBSTACLE MODULE SECTION********************/
-      extern void setupObstacleModule(void);
-      extern int isObstacleDetected;
+      #define TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN 2
+      #define TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN 3
+      
+      extern bool isObstacleDetected;
+      void setUpObstacleModule(void);
+      void checkObstacle(void);
     /********************END OF OBSTACLE MODULE SECTION********************/
 
 
@@ -53,15 +57,8 @@
 
     /********************END OF BOUNDARY MODULE SECTION********************/
 
-
-
-
-
-
     #ifdef __cplusplus
     } // extern "C"
     #endif
 
 #endif
-
-

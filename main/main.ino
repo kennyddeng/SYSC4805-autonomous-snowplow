@@ -3,20 +3,19 @@
 void watchdogSetup(){}
 
 int currentState = NORMAL_STATE;
+extern bool isObstacleDetected;
 extern bool isBoundaryDetected;
 
 void setup() {
   setupBoundaryModule();
   setupMovementModule();
-  setupObstacleModule();
+  setUpObstacleModule();
 
   Serial.begin(9600);
   watchdogEnable(100);  
-
 }
 
 void loop() {
-
   // Reset the watchdog timer
   watchdogReset();
 
@@ -46,6 +45,11 @@ void loop() {
 * Update the state based on the obstacle and boundary flags
 */
 void updateState() {
+  if(isObstacleDetected){
+    currentState = OBSTACLE_DETECTED_STATE;
+  }else{
+    currentState = NORMAL_STATE;
+  }
   if (isBoundaryDetected) {
     currentState = BOUNDARY_DETECTED_STATE;
   } else {

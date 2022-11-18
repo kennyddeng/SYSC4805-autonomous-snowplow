@@ -47,7 +47,6 @@ void enableMovement(){
     digitalWrite(RIGHT_SIDE_ENABLE_PIN, HIGH);
 }
 
-
 /**
 * Turn the vehicle right
 */
