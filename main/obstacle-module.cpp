@@ -5,22 +5,12 @@
 #include "Arduino.h"
 #include "Adafruit_VL53L1X.h"
 #include "main.h"
-
-//Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN, TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN);
-#define IRQ_PIN 2
-#define XSHUT_PIN 3
-
-Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(XSHUT_PIN, IRQ_PIN);
-
-bool isObstacleDetected;
+#include <iostream>
+Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(TIME_OF_FLIGHT_DISTANCE_SENSOR_IRQ_PIN, TIME_OF_FLIGHT_DISTANCE_SENSOR_XSHUT_PIN);
+bool isObstacleDetected = false;
 
 
 void setUpObstacleModule(){
-    setUpTimeOfFlightDistanceSensor();
-}
-
-
-void setUpTimeOfFlightDistanceSensor() {
     Serial.begin(115200);
     while (!Serial) delay(10);
 
@@ -55,20 +45,8 @@ void setUpTimeOfFlightDistanceSensor() {
     */
 }
 
-void checkObstacle(int16_t distance) {
-    /*
-    input: valid distance in mm
-    */
 
-    if (distance <= 100) {
-        isObstacleDetected = true;
-    } else {
-        isObstacleDetected = false;
-    }
-}
-
-
-void loop() {
+void checkObstacle() {
     int16_t distance;
 
     if (vl53.dataReady()) {
@@ -87,6 +65,10 @@ void loop() {
         // data is read out, time for another reading!
         vl53.clearInterrupt();
 
-        checkObstacle(distance);
+        if (distance <= 100) {
+          isObstacleDetected = true;
+        } else {
+          isObstacleDetected = false;
+        }
     }  
 }
