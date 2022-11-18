@@ -19,14 +19,6 @@ void setupMovementModule(){
 }
 
 /**
-* Enable vehicle movement
-*/
-void enableMovement(){
-    digitalWrite(LEFT_SIDE_ENABLE_PIN, HIGH);
-    digitalWrite(RIGHT_SIDE_ENABLE_PIN, HIGH);
-}
-
-/**
 * Turn the vehicle left
 */
 void turnLeft(){
@@ -47,8 +39,13 @@ void stop(){
     digitalWrite(RIGHT_SIDE_ENABLE_PIN, LOW);
 }
 
-
-
+/**
+* Enable vehicle movement
+*/
+void enableMovement(){
+    digitalWrite(LEFT_SIDE_ENABLE_PIN, HIGH);
+    digitalWrite(RIGHT_SIDE_ENABLE_PIN, HIGH);
+}
 
 /**
 * Turn the vehicle right
