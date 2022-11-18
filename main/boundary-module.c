@@ -15,6 +15,8 @@ void setupBoundaryModule(){
   pinMode(CENTER_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
   pinMode(RIGHT_LINE_DETECTION_OUT_PIN,INPUT_PULLUP);
 
+
+// adding the interrupts for the checkBoundary
   attachInterrupt(LEFT_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
   attachInterrupt(CENTER_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
   attachInterrupt(RIGHT_LINE_DETECTION_OUT_PIN, checkBoundary, CHANGE);
