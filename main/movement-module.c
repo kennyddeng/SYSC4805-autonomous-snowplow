@@ -35,16 +35,18 @@ void turnLeft(){
 * Stop the vehicle
 */
 void stop(){
-    digitalWrite(LEFT_SIDE_ENABLE_PIN, LOW);
-    digitalWrite(RIGHT_SIDE_ENABLE_PIN, LOW);
+    analogWrite(LEFT_SIDE_ENABLE_PIN, LOW);
+    analogWrite(RIGHT_SIDE_ENABLE_PIN, LOW);
 }
 
 /**
 * Enable vehicle movement
 */
 void enableMovement(){
-    digitalWrite(LEFT_SIDE_ENABLE_PIN, HIGH);
-    digitalWrite(RIGHT_SIDE_ENABLE_PIN, HIGH);
+  
+    analogWrite(RIGHT_SIDE_ENABLE_PIN, MAX_SPEED);
+    analogWrite(LEFT_SIDE_ENABLE_PIN, MAX_SPEED);
+
 }
 
 /**
@@ -53,15 +55,12 @@ void enableMovement(){
 void turnRight(){
   enableMovement();
   
-  // Set left side forward
   digitalWrite(LEFT_SIDE_DIRECTION_PIN, HIGH);
-
-  // Set left side backwards
   digitalWrite(RIGHT_SIDE_DIRECTION_PIN, LOW);
 }
 
 /**
-* Move the vehicle forward
+* Move the vehicle forwards
 */
 void moveForward(){
     enableMovement();
