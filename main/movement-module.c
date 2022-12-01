@@ -7,7 +7,7 @@
 #include "main.h"
 
 /**
-*  Set up the movement module
+*  This function sets up the movement module
 */
 void setupMovementModule(){
     // configure output direction pin :
@@ -19,7 +19,7 @@ void setupMovementModule(){
 }
 
 /**
-* Turn the vehicle left
+* This function turns the vehicle left
 */
 void turnLeft(){
   enableMovement();
@@ -32,7 +32,7 @@ void turnLeft(){
 }
 
 /**
-* Stop the vehicle
+* This function stops the vehicle
 */
 void stop(){
     analogWrite(LEFT_SIDE_ENABLE_PIN, LOW);
@@ -40,17 +40,15 @@ void stop(){
 }
 
 /**
-* Enable vehicle movement
+* This function enable normal vehicle movement
 */
 void enableMovement(){
-  
-    analogWrite(RIGHT_SIDE_ENABLE_PIN, MAX_SPEED);
-    analogWrite(LEFT_SIDE_ENABLE_PIN, MAX_SPEED);
-
+    analogWrite(RIGHT_SIDE_ENABLE_PIN, NORMAL_MAX_SPEED);
+    analogWrite(LEFT_SIDE_ENABLE_PIN, NORMAL_MAX_SPEED);
 }
 
 /**
-* Turn the vehicle right
+* This function turns the vehicle right
 */
 void turnRight(){
   enableMovement();
@@ -60,7 +58,7 @@ void turnRight(){
 }
 
 /**
-* Move the vehicle forwards
+* This function moves the vehicle forwards
 */
 void moveForward(){
     enableMovement();
@@ -70,11 +68,24 @@ void moveForward(){
 }
 
 /**
-* Move the vehicle backwards
+* This function moves the vehicle backwards
 */
 void moveBackward(){
     enableMovement();
 
     digitalWrite(LEFT_SIDE_DIRECTION_PIN, LOW);
     digitalWrite(RIGHT_SIDE_DIRECTION_PIN, LOW);    
+}
+
+/**
+* This function moves the vehicle backwards while turning left
+*/
+void moveBackwardsAndTurnLeft(){
+  // Update the direction for each side via direction pin
+  digitalWrite(LEFT_SIDE_DIRECTION_PIN, LOW);
+  digitalWrite(RIGHT_SIDE_DIRECTION_PIN, HIGH);
+
+  //Update the speed for each side via enable pins
+  analogWrite(RIGHT_SIDE_ENABLE_PIN, RIGHT_SIDE_BACKWARDS_TURN_SPEED);
+  analogWrite(LEFT_SIDE_ENABLE_PIN, LEFT_SIDE_BACKWARDS_TURN_SPEED);
 }

@@ -1,72 +1,56 @@
 #include "main.h"
 
-void watchdogSetup(){}
-
+// The initial state of the system
 int currentState = NORMAL_STATE;
-// extern bool isCloseObstacleDetected;
-// extern bool isFarObstacleDetected;
-// extern bool isBoundaryDetected;
-// extern bool isVMA330OnlyDetectedObstacle;
 
-
+/**
+* This function sets up the system
+*/
 void setup() {
   Serial.begin(115200);
   while (!Serial) delay(10);
   Serial.println("Serial Monitor initialized...");
 
-
+  //Set the supporting modules
   setUpObstacleModule();
   setupBoundaryModule();
   setupMovementModule();
 
-    Serial.println("SET UP!!!!!!!!!!!!");
-
-  watchdogEnable(10000);  
+  watchdogEnable(100);//Enable the watchdog time for 100ms  
 }
 
+/*
+* This function controls the system's behavior
+*/
 void loop() {    
+  watchdogReset();//Reset the watchdog timer
 
-    // Reset the watchdog timer
-    watchdogReset();
+  checkObstacle();//Check for obstacle, updating the obstacle system flags
+  checkBoundary();//Check for boundaries, updating the boundary sytem flags
 
+  updateState();//Based on the updated system flags, update the state
 
-    checkObstacle();
-    checkBoundary();
-
-  //   // Update the state
-    updateState();
-
-  Serial.println(currentState);
-
-
-
+  Serial.println("Current State: " + String(currentState));
+  
+  // Update the vehicle behaviour based on the current state
   switch (currentState) {
-    case (NORMAL_STATE):
-      moveForward();
-      break;
+      case (NORMAL_STATE):
+        moveForward();
+        break;
 
-    case (OBSTACLE_DETECTION_RESET_VEHICLE_POSISTION_STATE):
-      moveBackward();
-      delay(1000);
-      turnLeft();
-      delay(2250);
+      case (OBSTACLE_CLOSE_DETECTED_STATE):
+        moveBackwardsAndTurnLeft();
+        break;
 
-    break;
+      case (OBSTACLE_FAR_DETECTED_STATE):
+        turnLeft();
+        break;
 
-    case (OBSTACLE_CLOSE_DETECTED_STATE):
-      moveBackward();
-      break;
-
-    case (OBSTACLE_FAR_DETECTED_STATE):
-      turnLeft();
-      break;
-
-
-
-    case (BOUNDARY_DETECTED_STATE):
-      turnLeft();
-      break;
+      case (BOUNDARY_DETECTED_STATE):
+        moveBackwardsAndTurnLeft();
+        break;
   }
+  
 }
 
 
@@ -74,20 +58,18 @@ void loop() {
 * Update the state based on the obstacle and boundary flags
 */
 void updateState() {
-  if(didAnalogDistanceSensorOnlyDetectedObstacle || didUltrasonicSensorOnlyDetectedObstacle){    
-    currentState = OBSTACLE_DETECTION_RESET_VEHICLE_POSISTION_STATE;
-
-  } else if(isCloseObstacleDetected){
-    currentState = OBSTACLE_CLOSE_DETECTED_STATE;
-
-  }else if(isFarObstacleDetected){
-    currentState = OBSTACLE_FAR_DETECTED_STATE;
-
+  if(isCloseObstacleDetected){
+    currentState = OBSTACLE_CLOSE_DETECTED_STATE;    
   }
+  
+  else if(isFarObstacleDetected){
+    currentState = OBSTACLE_FAR_DETECTED_STATE;
+  }
+
   else if (isBoundaryDetected) {
     currentState = BOUNDARY_DETECTED_STATE;
-
   } 
+
   else{
     currentState = NORMAL_STATE;
   }
