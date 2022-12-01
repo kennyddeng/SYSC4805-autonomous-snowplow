@@ -1,11 +1,7 @@
 #ifndef MAIN_FILE_H    
 #define MAIN_FILE_H   
   
-  /**
-  * Watchdog setup
-  * Required definition to enable to watchdog functionality
-  */
-  void watchdogSetup(){}
+  void watchdogSetup(){}//Watchdog setup - Required definition to enable to watchdog functionality
 
   #ifdef __cplusplus
   extern "C"{
@@ -58,8 +54,6 @@
 
       #define TIME_OF_FLIGHT_IRQ_PIN 2//The IRQ pin for the time of flight sensor
       #define TIME_OF_FLIGHT_XSHUT_PIN 3 //The XSHUT pin for the time of flight sensor
-
-      #define VMA330_IR_OBSTACLE_OUT_PIN 4//The output pin for the VMA330 analog distance sensor
       
       #define OBSTACLE_CLOSE_DISTANCE_TRIGGER 20//The close obstacle distance threshold
       #define OBSTACLE_FAR_DISTANCE_TRIGGER 40//The far obstacle  distance threshold

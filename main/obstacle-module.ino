@@ -22,9 +22,6 @@ Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(TIME_OF_FLIGHT_XSHUT_PIN, TIME_OF_FLIGH
 * This function configures hardware components that enable the obstacle detection module.
 */
 void setUpObstacleModule(){
-  //Set up analog distance sensor pin
-  pinMode(VMA330_IR_OBSTACLE_OUT_PIN, INPUT);
-
   //Set up time-of-flight distance sensor
   Wire.begin();
   Serial.println("Wire.begin is  completing!");

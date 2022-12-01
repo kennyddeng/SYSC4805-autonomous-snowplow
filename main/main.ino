@@ -11,7 +11,7 @@ void setup() {
   while (!Serial) delay(10);
   Serial.println("Serial Monitor initialized...");
 
-  //Set the supporting modules
+  //Set up the supporting modules
   setUpObstacleModule();
   setupBoundaryModule();
   setupMovementModule();
