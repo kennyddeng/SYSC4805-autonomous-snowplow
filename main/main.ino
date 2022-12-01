@@ -1,5 +1,7 @@
 #include "main.h"
 
+void watchdogSetup(){}//Watchdog setup - Required definition to enable to watchdog functionality
+
 // The initial state of the system
 int currentState = NORMAL_STATE;
 
@@ -16,7 +18,7 @@ void setup() {
   setupBoundaryModule();
   setupMovementModule();
 
-  watchdogEnable(100);//Enable the watchdog time for 100ms  
+  watchdogEnable(WATCHDOG_TIMER);//Enable the watchdog time for 100ms  
 }
 
 /*

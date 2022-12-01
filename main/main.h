@@ -1,8 +1,6 @@
 #ifndef MAIN_FILE_H    
 #define MAIN_FILE_H   
   
-  void watchdogSetup(){}//Watchdog setup - Required definition to enable to watchdog functionality
-
   #ifdef __cplusplus
   extern "C"{
   #endif
@@ -14,6 +12,8 @@
       #define OBSTACLE_CLOSE_DETECTED_STATE 1 //The state indicating that an obstacle is close
       #define OBSTACLE_FAR_DETECTED_STATE 2 //The state indicating that an obstacle is within the close and far distance threshold
       #define BOUNDARY_DETECTED_STATE 3 //The state indicating that a boundary was detected 
+
+      #define WATCHDOG_TIMER 100//The watchdog timer
     /********************END OF MAIN CONTROLLER MODULE SECTION********************/
 
 

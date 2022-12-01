@@ -63,7 +63,7 @@ void checkObstacle(){
     //Gather distances from the ultrasonic sensors and time-of-flight sensor
     int leftDistanceInCm = LeftUltraSonic.cm(); // From the left ultrasonic sensor
     int rightDistanceInCm = RightUltraSonic.cm();// From the right ultrasonic sensor
-    int centerDistanceInCm = vl53.distance() / 10 ;// From the time-of-flight sensor
+    int centerDistanceInCm = vl53.distance() / 10 ;// From the time-of-flight sensor (converting from mm to cm)
     vl53.clearInterrupt(); //Clear the time-of-flight interrupt
 
     printf(" Left Distance: \r %d cm; Center Distance: \r %d cm; Right Distance: \r %d cm \n", leftDistanceInCm, centerDistanceInCm, rightDistanceInCm);
