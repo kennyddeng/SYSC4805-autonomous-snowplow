@@ -44,4 +44,5 @@ Contains the source file for the boundary module. Detect boundaries and change t
 ![State Diagram](docs/StateDiagram.png)
 
 ## Sequence Diagram
-![Sequence Diagram](docs/SequenceDiagram.png)
+![Obstacle Sequence Diagram](docs/SequenceDiagramObstacle.png)
+![Boundary Sequence Diagram](docs/SequenceDiagramBoundary.png)
