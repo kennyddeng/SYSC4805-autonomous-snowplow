@@ -1,2 +1,2 @@
-### [Project Description PDF](TEMP)
-### [Final Report PDF](TEMP)
+### [Project Description PDF](ProjectDescription.pdf)
+### [Final Report PDF](FinalReport.pdf)
